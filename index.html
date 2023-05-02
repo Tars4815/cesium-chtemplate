@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8" />
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>Arsenale Piacenza</title>
+    <!-- Pointing to the CesiumJS lib -->
+    <script src="libs/CesiumUnminified/Cesium.js"></script>
+    <!-- Adding CSS file as reference for the style of the page-->
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <div class="toolbar-left">
+        <button onclick="alert('Example of help text');">Help</button>
+    </div>
+    <!-- Defining sidebar nav that includes pages and timeline exploration of the site-->
+    <div class="sidebar">
+        <div class="main-menu">
+            <ul class="menu-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about/index.html">About</a></li>
+                <li><a href="contacts/index.html">Contacts</a></li>
+                <li>
+                    <a href="#">Select view ↓</a>
+                    <div class="second-menu">
+                        <ul>
+                            <li><button id="toggle-building">Toggle building</button></li>
+                            <div>
+                                <li id="section">
+                                    <i>Site elements</i>
+                                </li>
+                            </div>
+                            <li>
+                                <button id="change-view1">Bastione San Benedetto</button>
+                            </li>
+                            <li>
+                                <button id="change-view2">Bastione San Giovanni</button>
+                            </li>
+                            <div>
+                                <li id="section2">
+                                    <i><b>Construction phases</b></i>
+                                </li>
+                            </div>
+                            <li>
+                                <button id="change-viewtot"><b>Pre-existent elements</b></button>
+                            </li>
+                            <li><button id="fase-uno"><b>I Phase – May 1547</b></button></li>
+                            <li><button id="fase-due"><b>II Phase – September 1547</b></button></li>
+                            <li><button id="fase-tre"><b>III Phase – November 1548</b></button></li>
+                            <li><button id="fase-quattro"><b>IV Phase – Winter 1547-1548</b></button></li>
+                            <li><button id="fase-cinque">V Phase – January 1550</button></li>
+                            <li><button id="fase-sei">VI Phase – June 1550</button></li>
+                            <li><button id="fase-sette">VII Phase – August 1550</button></li>
+                            <li><button id="fase-otto">VIII Phase – October 1551</button></li>
+                            <li><button id="fase-nove">IX Phase – May 1553</button></li>
+                            <div>
+                                <li id="section3">
+                                    <i>Destruction phases</i>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // Get your token from https://cesium.com/ion/tokens
+        Cesium.Ion.defaultAccessToken =
+            "ACCESS_TOKEN"; // Insert here your personal access token from ION
+        // Initialize CesiumViewer
+        const viewer = new Cesium.Viewer("cesiumContainer", {
+            terrainProvider: Cesium.createWorldTerrain(),
+            timeline: false,
+            animation: false,
+            infoBox: true,
+        });
+        // Add the 3D Tileset you created from your Cesium ion account.
+        const newBuildingTileset = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1364563), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 1st phase.
+        const primaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675326), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 2nd phase.
+        const secondaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675327), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 3rd phase.
+        const terzaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675328), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 4th phase.
+        const quartaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675329), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 5th phase.
+        const quintaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675330), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 6th phase.
+        const sestaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675331), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 7th phase.
+        const settimaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675332), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 8th phase.
+        const ottavaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675333), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        // Add the 3D Tileset 8th phase.
+        const nonaFaseArsenale = viewer.scene.primitives.add(
+            new Cesium.Cesium3DTileset({
+                url: Cesium.IonResource.fromAssetId(1675334), // Change this accoridng to the Asset ID of interest in ION
+            })
+        );
+
+        primaFaseArsenale.show = false;
+        secondaFaseArsenale.show = false;
+        terzaFaseArsenale.show = false;
+        quartaFaseArsenale.show = false;
+        quintaFaseArsenale.show = false;
+        sestaFaseArsenale.show = false;
+        settimaFaseArsenale.show = false;
+        ottavaFaseArsenale.show = false;
+        nonaFaseArsenale.show = false;
+
+        // Move the camera to the new building.
+        viewer.flyTo(newBuildingTileset);
+        var heading = Cesium.Math.toRadians(60);
+        var pitch = Cesium.Math.toRadians(-30);
+        // Toggle the tileset's show property when the button is clicked.
+        document.querySelector("#toggle-building").onclick = function () {
+            newBuildingTileset.show = !newBuildingTileset.show;
+        };
+        document.querySelector("#change-view1").onclick = function () {
+            prova.show = true;
+            prova2.show = false;
+            viewer.selectedEntity = prova;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.679, 45.0495, 150),
+                orientation: {
+                    heading: Cesium.Math.toRadians(40),
+                    pitch: pitch,
+                    roll: 0.0,
+                },
+            });
+        };
+        document.querySelector("#change-view2").onclick = function () {
+            prova.show = false;
+            prova2.show = true;
+            viewer.selectedEntity = prova2;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.681, 45.0485, 150),
+                orientation: {
+                    heading: Cesium.Math.toRadians(40),
+                    pitch: pitch,
+                    roll: 0.0,
+                },
+            });
+        };
+        document.querySelector("#change-viewtot").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            primaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+
+        // Defining code for activating visibility of 1st construction phase
+        document.querySelector("#fase-uno").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = true;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 2nd construction phase
+        document.querySelector("#fase-due").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = true;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 3rd construction phase
+        document.querySelector("#fase-tre").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = true;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 4th construction phase
+        document.querySelector("#fase-quattro").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = true;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 5th construction phase
+        document.querySelector("#fase-cinque").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = true;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 6th construction phase
+        document.querySelector("#fase-sei").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = true;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 7th construction phase
+        document.querySelector("#fase-sette").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = true;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 8th construction phase
+        document.querySelector("#fase-otto").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = true;
+            nonaFaseArsenale.show = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        // Defining code for activating visibility of 9th construction phase
+        document.querySelector("#fase-nove").onclick = function () {
+            prova.show = false;
+            prova2.show = false;
+            newBuildingTileset.show = false;
+            primaFaseArsenale.show = false;
+            secondaFaseArsenale.show = false;
+            terzaFaseArsenale.show = false;
+            quartaFaseArsenale.show = false;
+            quintaFaseArsenale.show = false;
+            sestaFaseArsenale.show = false;
+            settimaFaseArsenale.show = false;
+            ottavaFaseArsenale.show = false;
+            nonaFaseArsenale.show = true;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(9.68102816357348, 45.04559087193193, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-40),
+                    roll: 0.0,
+                },
+            });
+        };
+
+        var prova = viewer.entities.add({
+            name: "Arsenale Piacenza",
+            position: Cesium.Cartesian3.fromDegrees(9.6795, 45.0498, 105),
+            point: {
+                pixelSize: 2,
+                color: Cesium.Color.RED,
+                outlineColor: Cesium.Color.RED,
+                outlineWidth: 2,
+            },
+            label: {
+                font: "20pt monospace",
+                style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+                outlineWidth: 2,
+                verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+                pixelOffset: new Cesium.Cartesian2(0, -9),
+            },
+        });
+        prova.name = "Bastione San Benedetto";
+        prova.description =
+            "<h1>Titoletto</h1><p>Lorem ipsum lorem ipsum</p><button class='fly1'>Next scene</button>";
+        viewer.selectedEntity = prova;
+        var prova2 = viewer.entities.add({
+            name: "Arsenale Piacenza",
+            position: Cesium.Cartesian3.fromDegrees(9.6819, 45.0489, 106),
+            point: {
+                pixelSize: 2,
+                color: Cesium.Color.RED,
+                outlineColor: Cesium.Color.RED,
+                outlineWidth: 2,
+            },
+            label: {
+                font: "20pt monospace",
+                style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+                outlineWidth: 2,
+                verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+                pixelOffset: new Cesium.Cartesian2(0, -9),
+            },
+        });
+        prova2.name = "Bastione San Giovanni";
+        prova2.description =
+            "<h1>Titoletto</h1><p>Lorem ipsum lorem ipsum</p><button class='fly'>Previous Scene</button><button class='fly2'>Next Scene</button>";
+        //viewer.zoomTo(viewer.entities);
+        viewer.zoomTo(prova, new Cesium.HeadingPitchRange(heading, pitch));
+    </script>
+</body>
+
+</html>

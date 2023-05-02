@@ -1,0 +1,100 @@
+@import url(../Build/CesiumUnminified/Widgets/widgets.css);
+html,
+body {
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+#cesiumContainer {
+  height: 100%;
+  margin-left: 10%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.toolbar-left {
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+}
+
+.sidebar {
+  height: 100%;
+  width: var(--main-sidebar-width);
+  min-width: 10%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 20px;
+  background-color: grey;
+  overflow-y: scroll;
+}
+
+.sidebar div {
+  padding: 8px;
+  font-size: 20px;
+  display: block;
+}
+
+.body-text {
+  margin-left: 150px;
+  font-size: 18px;
+}
+
+.main-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: block;
+}
+
+.main-menu ul li a {
+  padding: 5px;
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.main-menu ul li ul {
+  display: none;
+}
+
+.main-menu ul li:hover ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-menu ul li:hover a {
+  color: white;
+}
+
+button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*input has OS specific font-family*/
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.second-menu {
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+#section {
+  font-size: 18px;
+}
+
+#section2 {
+  font-size: 18px;
+}
+
+#section3 {
+  font-size: 18px;
+}
