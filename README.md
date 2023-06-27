@@ -13,11 +13,9 @@ Gaspari, F., Ioli, F., Barbieri, F., Rivieri, C., Dondi, M., and Pinto, L.: **RE
 
 - [How to install and run](#how-to-install-and-run-⚙)
 - [Features](#features-💡)
-- [License](#license)
 - [Performance](#performance-💻)
 - [Credits](#credits-👥)
 - [How to contribute](#how-to-contribute-❓)
-- [Examples](#examples)
 
 ## **How to install and run** ⚙
 
